@@ -2,8 +2,8 @@ import pygame
 
 w = 600
 h = 337
-x = 100
-y = 100
+x = 25
+y = 25
 
 pygame.init()
 pygame.display.set_caption("Waves Of War")
@@ -20,8 +20,17 @@ while run:
         if event.type == pygame.QUIT:
             run = False
     
-    x += 0.25
-    y += 0.25
+    keys=pygame.key.get_pressed()
+
+    if keys[pygame.K_a] or keys[pygame.K_LEFT]:
+        x -=0.2
+    if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+        x += 0.2
+    if keys[pygame.K_UP] or keys[pygame.K_w]:
+        y -= 0.2
+    if keys[pygame.K_DOWN] or keys[pygame.K_s]:
+        y += 0.2
+
     disp.fill("white")
     disp.blit(image,(0,0))
     disp.blit(player,(x,y))
